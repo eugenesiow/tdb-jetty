@@ -10,10 +10,19 @@ public class TdbServer
 {
 	public static void main( String[] args ) throws Exception
     {
+		
+		
+		String tdbDir = "/Users/eugene/LSD_TDB_databases";
+				
+		if(args.length>0) {
+			tdbDir = args[0];
+		}
+		
         Server server = new Server(8080);
-        server.setHandler(new TdbQueryHandler());
+        server.setHandler(new TdbQueryHandler(tdbDir));
  
         server.start();
         server.join();
+
     }
 }
